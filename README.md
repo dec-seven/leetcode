@@ -1,2 +1,2 @@
 # leetcode
-keep computing
+My LeetCode Solution in JavaScript or  TypeScript
