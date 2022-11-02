@@ -50,19 +50,24 @@
  * @return {number}
  */
 var search = function(nums, target) {
-  // 已知数组升序且不重复
-  // 优先考虑二分查找
+  // 已知数组升序且不重复，寻找目标值
+  // 考虑使用二分法求解
+
+  // 写法一，左闭右闭区间
   let left = 0 ,right = nums.length - 1
+  // 区间左闭右闭，所以left === right是有意义的 ，所以要用 <= ,即 left <= right
   while(left <= right){
-    const middle = Math.round((left + right) / 2)
-    if(nums[middle] > target) {
-      // 目标值在左区间
+    const middle = parseInt((left + right) / 2)
+    // 分析二分查找的一个技巧是：不要出现 else，而是把所有情况用 else if 写清楚，这样可以清楚地展现所有细节
+    if (nums[middle] === target) { 
+      // 找到目标值
+      return middle
+    } else if(nums[middle] > target) {
+      // 当前这个nums[middle]一定不是target,所以左区间结束位置的下标就是 middle - 1, 即 right = middle - 1
       right = middle - 1
     } else if (nums[middle] < target){
-      // 目标值在右区间
+      // 
       left = middle + 1
-    } else {
-      return middle
     }
   }
   return -1
