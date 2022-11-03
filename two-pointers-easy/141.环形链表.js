@@ -22,11 +22,18 @@
  * @return {boolean}
  */
 var hasCycle = function(head) {
-    let fast = head;
+    // 定义快慢指针，初始都指向头结点head
+    let fast  = head
+    let slow = head;
     while (fast && fast.next){
-        head = head.next
-        fast = fast.next.next
-        if (head === fast) return true
+        // 慢指针每次1步
+        slow = slow.next;
+        // 快指针每次2步 
+        fast = fast.next.next;
+        //快慢指针相遇，说明含有环
+        if (slow == fast) {
+            return true;
+        }
     }
     return false
 };
