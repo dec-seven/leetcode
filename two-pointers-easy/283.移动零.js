@@ -54,14 +54,14 @@
  * @return {void} Do not return anything, modify nums in-place instead.
  */
 var moveZeroes = function(nums) {
-  let j = 0;
-    for(let i in nums) {
-        if(nums[i] !== 0) {
-           [nums[j], nums[i]] = [nums[i], nums[j]];
-           j++;
-        }
+  let left = 0 , right = 0
+  while (right < nums.length) {
+    if (nums[right] !== 0) {
+      [nums[left],nums[right]] = [nums[right],nums[left]]
+      left ++
     }
-
+    right ++
+  }
 };
 // @lc code=end
 
